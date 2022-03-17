@@ -3,9 +3,9 @@ const jwt = require("jsonwebtoken");
 
 class JwtHandling {
 
-    static async jwtSign (email,id){
+    static async jwtSign (email){
         try {
-            const result = await jwt.sign({"email":email , "id":id  } ,process.env.JWT_SECRET)
+            const result = await jwt.sign({"email":email } ,process.env.JWT_SECRET)
             return {success:true , data:result}
         }catch (e){
             return {success:false ,data:null}
@@ -18,8 +18,8 @@ class JwtHandling {
 
         if(token) {
             try {
-                const {email,id} = await jwt.verify(token , process.env.JWT_SECRET) ;
-                req.infos= {"authEmail":email,"authId":id} ;
+                const {email} = await jwt.verify(token , process.env.JWT_SECRET) ;
+                req.infos= {"authEmail":email} ;
                 next();
             }catch (err) {
                 res.status(400).send(err)
