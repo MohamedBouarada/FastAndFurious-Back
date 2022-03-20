@@ -5,4 +5,5 @@ const  router = express.Router();
 
 router.post("/register" , participantController.add)
 router.get("/teams/:competition" , participantController.get)
+router.delete("/teams/:id",participantController.delete)
 module.exports = router

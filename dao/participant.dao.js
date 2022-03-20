@@ -21,7 +21,7 @@ class ParticipantDao {
             return {success: false, data: null}
         }
     }
-    static async getAll(competition){
+    static async getByCompetition(competition){
         try {
             const result = await participantModel.find({"competition":competition}).exec();
             return {"success": true, data: result}
@@ -29,6 +29,16 @@ class ParticipantDao {
         } catch (e) {
             console.log("error when getting teams" + e);
             return {success: false, data: null}
+        }
+    }
+    static async deleteById(id){
+        try {
+            const result = await participantModel.findByIdAndDelete(id).exec();
+            return {"success": true, data: result} 
+        } catch (e) {
+            console.log("error when deleting" + e);
+            return {success: false, data: null}
+            
         }
     }
 }

@@ -26,7 +26,7 @@ class ParticipantController {
     static async get(req,res) {
         const competition = req.params.competition;
 
-        const teams= await ParticipantDao.getAll(competition);
+        const teams= await ParticipantDao.getByCompetition(competition);
         if(teams.success === false){
             return res.status(500).json("error ")
         }
@@ -34,6 +34,17 @@ class ParticipantController {
         
 
         }
+
+    static async delete(req,res){
+        const id=req.params.id;
+
+        const team = await ParticipantDao.deleteById(id);
+        if(team.success === false){
+            return res.status(500).json("error ")
+        }
+        return res.status(200).send("user deleted successfully");
+        }
+    
 }
 
 
