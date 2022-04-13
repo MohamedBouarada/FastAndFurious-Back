@@ -36,7 +36,7 @@ class AdminController {
             return res.status(500).json("error occurred while registering")
         }
         if(!adminExists.data){
-            res.status(404).send("please verify your email or create an account")
+            return res.status(404).send("please verify your email or create an account")
         }
         const passwordDecryption = await passwordService.decryptingPassword(password,adminExists.data.password);
         if(passwordDecryption.success === false){

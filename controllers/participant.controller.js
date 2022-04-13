@@ -4,6 +4,10 @@ const ParticipantDao = require("../dao/participant.dao");
 class ParticipantController {
     static async add(req,res) {
         const {competition,nomEquipe,etablissement,nomPrenomChef,mailChef,telChef,membre1,membre2,membre3}=req.body;
+        let isnum = /^\d+$/.test(telChef);
+        if(isnum===false){
+            return res.status(400).send("invalid phone number")
+        }
         //const {email,password} = req.body ;
         const teamExists = await ParticipantDao.getteamByName(competition,nomEquipe,etablissement,nomPrenomChef,mailChef);
         if(teamExists.success === false){

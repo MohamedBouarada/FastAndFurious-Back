@@ -9,6 +9,7 @@ const cors = require("cors");
 
 
 const app = express() ;
+app.use(cors({origin:'*'}));
 
 const PORT = process.env.PORT || 5000 ;
 
@@ -18,7 +19,6 @@ app.use("/email" ,mailRouter )
 app.use("/admin" , adminRouter)
 app.use("/participant" , participantRouter)
 
-app.use(cors({origin:'*'}));
 
 mongoose.connect(process.env.databaseUri,
     {useNewUrlParser: true, useUnifiedTopology: true })
