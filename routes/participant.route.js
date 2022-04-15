@@ -1,9 +1,10 @@
 const express = require("express");
 const participantController = require("../controllers/participant.controller");
+const jwtService = require("../services/jwt-handling/jwtHandling");
 const  router = express.Router();
 
 
 router.post("/register" , participantController.add)
-router.get("/teams/:competition" , participantController.get)
-router.delete("/teams/:id",participantController.delete)
+router.get("/teams/:competition" ,jwtService.jwtVerify, participantController.get)
+router.delete("/teams/:id",jwtService.jwtVerify,participantController.delete)
 module.exports = router
