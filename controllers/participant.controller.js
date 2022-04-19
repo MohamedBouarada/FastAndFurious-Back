@@ -3,7 +3,7 @@ const ParticipantDao = require("../dao/participant.dao");
 
 class ParticipantController {
     static async add(req,res) {
-        const {competition,nomEquipe,etablissement,nomPrenomChef,mailChef,telChef,membre1,membre2,membre3}=req.body;
+        const {competition,nomEquipe,etablissement,nomPrenomChef,mailChef,telChef,membre1,membre2,membre3,membre4}=req.body;
         let isnum = /^\d+$/.test(telChef);
         if(isnum===false){
             return res.status(400).send("invalid phone number")
@@ -18,7 +18,7 @@ class ParticipantController {
         }
         
         const participantToSave = {
-            competition,nomEquipe,etablissement,nomPrenomChef,mailChef,telChef,membre1,membre2,membre3
+            competition,nomEquipe,etablissement,nomPrenomChef,mailChef,telChef,membre1,membre2,membre3,membre4
         }
         const savingResponse = await ParticipantDao.add(participantToSave);
         if(savingResponse.success===false){

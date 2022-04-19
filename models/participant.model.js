@@ -10,7 +10,8 @@ const participantSchema =  new Schema ({
     telChef:{type: String, required:true},
     membre1:{type: String, required:true},
     membre2:{type: String, required:true},
-    membre3:{type: String, required:true}
+    membre3:{type: String, required:true},
+    membre4:{type: String, required:false}
 })
 
 const participantModel = mongoose.model('equipe' , participantSchema);
