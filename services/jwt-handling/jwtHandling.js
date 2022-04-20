@@ -14,18 +14,21 @@ class JwtHandling {
     }
 
     static async jwtVerify (req,res,next) {
-        const token = req.headers.token;
+        const token = req.headers.authorization;
 
+        if(!token) {
+            return res.status(403).json("undefined Bearer Authorization Header")
+        }
         if(token) {
             try {
                 const {email} = await jwt.verify(token , process.env.JWT_SECRET) ;
                 req.infos= {"authEmail":email} ;
-                next();
+                return next();
             }catch (err) {
-                res.status(400).send(err)
+               return res.status(400).send(err)
             }
         } else {
-            res.status(401).send("you are not authorized");
+           return res.status(401).send("you are not authorized");
         }
     }
 }

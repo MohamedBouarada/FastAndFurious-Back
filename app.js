@@ -4,7 +4,6 @@ const mongoose= require("mongoose");
 const mailRouter = require("./routes/mail.route")
 const adminRouter = require("./routes/admin.route")
 const participantRouter = require("./routes/participant.route")
-
 const cors = require("cors");
 
 
@@ -24,7 +23,10 @@ mongoose.connect(process.env.databaseUri,
     {useNewUrlParser: true, useUnifiedTopology: true })
     .then(()=>{
     console.log( "connected to DB") ;
-    app.listen(PORT , () => console.log("server is running on port " + PORT))
+app.listen(PORT , () => console.log("server is running on port " + PORT))
 })
     .catch(err => console.log ("error while connecting to DB" + err));
+
+
+
 
