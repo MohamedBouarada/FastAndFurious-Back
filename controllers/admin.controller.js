@@ -29,6 +29,7 @@ class AdminController {
     }
 
     static async login(req,res){
+        console.log(req.body);
         const {email,password} = req.body ;
         const adminExists = await   adminDao.getAdminByEmail(email);
         console.log(adminExists);

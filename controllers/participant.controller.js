@@ -29,7 +29,7 @@ class ParticipantController {
 
     static async get(req,res) {
         const competition = req.params.competition;
-
+        console.log('load');
         const teams= await ParticipantDao.getByCompetition(competition);
         if(teams.success === false){
             return res.status(500).json("error ")

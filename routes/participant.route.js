@@ -6,5 +6,5 @@ const  router = express.Router();
 
 router.post("/register" , participantController.add)
 router.get("/teams/:competition" ,jwtService.jwtVerify, participantController.get)
-router.delete("/teams/:id",jwtService.jwtVerify,participantController.delete)
+router.delete("/delete/:id",jwtService.jwtVerify,participantController.delete)
 module.exports = router

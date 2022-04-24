@@ -13,6 +13,7 @@ class AdminDao {
     }
     static async getAdminByEmail(email) {
         try {
+            console.log(email);
             const result = await adminModel.findOne({"email": email}).exec();
 
             return {"success": true, data: result}
