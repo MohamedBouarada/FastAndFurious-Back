@@ -3,9 +3,10 @@ const mailService = require("../services/mail-service/mailService")
 
 class MailController {
      static async sendMail (req,res) {
-        const {participantEmail} = req.body ;
-        console.log(participantEmail);
-       const response= await  mailService.main(participantEmail) ;
+          console.log(req.body)
+        const {emailChef} = req.body ;
+        console.log(emailChef);
+       const response= await  mailService.main(emailChef) ;
        if(response.success) {
             return res.status(200).json("email sent successfully")
        } else {

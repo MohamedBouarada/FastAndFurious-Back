@@ -21,9 +21,11 @@ class JwtHandling {
         }
         if(token) {
             try {
+                console.log(token);
                 const {email} = await jwt.verify(token , process.env.JWT_SECRET) ;
                 req.infos= {"authEmail":email} ;
-                return next();
+                //return next();
+                next();
             }catch (err) {
                return res.status(400).send(err)
             }
