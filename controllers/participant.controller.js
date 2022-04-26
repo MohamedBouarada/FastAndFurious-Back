@@ -28,7 +28,6 @@ class ParticipantController {
     }
 
     static async get(req,res) {
-        console.log('load');
         const competition = req.params.competition;
 
         const teams= await ParticipantDao.getByCompetition(competition);
